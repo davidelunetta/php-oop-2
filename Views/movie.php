@@ -3,9 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>PHP-oop-2</title>
 </head>
 <body>
+<form method="get">
+    <label for="pagine">Seleziona la pagina:</label>
+    <select name="pagine" id="pagine" onchange="this.form.submit()">
+        <option value="movie.php">Film</option>
+        <option value="games.php">Giochi</option>
+    </select>
+</form>
+<?php
+if(isset($_GET['pagine'])) {
+    $pagina_selezionata = $_GET['pagine'];
+    header("Location: Views/$pagina_selezionata");
+    exit();
+}
+?>
+
 <?php
 
 class Movie {
