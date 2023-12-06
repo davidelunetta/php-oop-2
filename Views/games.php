@@ -1,4 +1,5 @@
 
+
 <?php
 
 class Games {
@@ -11,14 +12,20 @@ class Games {
         $this->name = $name;
         $this->img_icon_url = $img_icon_url;
     }
-
-    public function displayInfo() {
-        echo "App ID: " . $this->appid . "<br>";
-        echo "Name: " . $this->name . "<br>";
-        echo "Image Logo URL: " . $this->img_icon_url . "<br>";
-    }
+    public function displayCard() {
+        echo '<div class="row">';
+        echo '<div class="col-md-4">';
+        echo '<div class="card" style="width: 18rem; margin-bottom: 20px;">'; // Aggiunto l'apice mancante
+        echo '<img src="' . $this->img_icon_url . '" alt="' . $this->name . ' Logo">'; // Corretto lo spazio dopo l'URL dell'immagine
+        echo '<div class="card-info">';
+        echo '<h2>ID: ' . $this->appid . '</h2>';
+        echo '<p>Name: ' . $this->name . '</p>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
 }
-
+}
 // Leggi il file JSON
 $json_data = file_get_contents('./Model/steam_db.json');
 
@@ -34,8 +41,8 @@ foreach ($games_array as $game_data) {
 
 // Stampare le informazioni dei giochi
 foreach ($games as $index => $game) {
-    echo "Informazioni del Game " . ($index + 1) . ":<br>";
-    $game->displayInfo();
+    // echo "Informazioni del Game " . ($index + 1) . ":<br>";
+    $game->displayCard();
     echo "<br>";
 }
 ?>
